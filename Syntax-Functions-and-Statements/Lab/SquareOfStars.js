@@ -1,20 +1,29 @@
-function squareOfStars(num){
-    let number =Number(num);
-    if(num===null){
-        number=5;
-    }
-    
-    for(let row = 0;row<=number; row++){
-      
-      for(let col=row;col<=row; col++){
-          console.log('*'.repeat(number));
-        //   console.log(row+'*');
-        //   console.log(col+'*');
-          
-        return;
-      }
-        
-    }
+function square(num) {
+ 
+  let myNum = Number(num);
 
+  for (let i = 1; i <= myNum; i++) {
+      let line = '';
+      for (let k = 1; k <= myNum; k++) {
+          line += '* ';
+      }
+      console.log(line);
+  }
 }
-squareOfStars(5);
+// function solve(num){
+//   let n = Number(num);
+  
+
+//   for (let i = 1; i <= n; i++) {
+//     let line='';
+//     for (let j = 1; j <= n; j++) {
+      
+//       line+='* ';
+//     }
+//     console.log(line);
+//   }
+  
+  
+// }
+console.log(square([5]));
+
