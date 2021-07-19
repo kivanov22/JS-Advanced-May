@@ -14,7 +14,7 @@ async function createPostTopic() {
 
     let res = await fetch(url);
     let data = await res.json();
-   // console.log(data);
+    // console.log(data);
     commentDiv.appendChild(createHtmlTopic(data));
 }
 
@@ -62,8 +62,8 @@ async function createReply(e) {
         });
 
     let result = await replyResponse.json();
-        console.log(result);
-        commentDiv.appendChild(createHtmlReply(result));
+    console.log(result);
+    commentDiv.appendChild(createHtmlReply(result));
 }
 
 createReplyTopic();
@@ -84,7 +84,7 @@ function createHtmlReply(r) {
     paragraphDateTime.prepend(userNameStrong);
 
     let timeElement = ce('time');
-    timeElement.textContent = '2020-10-10T12:08:28.451Z';
+    timeElement.textContent = getDateTime();//'2020-10-10T12:08:28.45'
     paragraphDateTime.appendChild(timeElement);
 
     let postContentDiv = ce('div', { class: 'post-content' });
@@ -109,7 +109,7 @@ function createHtmlTopic(t) {
     usernameSpan.textContent = t.username;
 
     let timeElement = ce('time');
-    timeElement.textContent = '2020-10-10T12:08:28.451Z';
+    timeElement.textContent = getDateTime();//'2020-10-10T12:08:28.45' 
 
     paragraphDateTime.textContent = ' posted on ';
     paragraphDateTime.prepend(usernameSpan);
@@ -125,7 +125,17 @@ function createHtmlTopic(t) {
 
     return headerDiv;
 }
+//Real-Time 
+function getDateTime() {
+    let currentdate = new Date();
 
+    return currentdate.getDate() + "/"
+        + (currentdate.getMonth() + 1) + "/"
+        + currentdate.getFullYear() + " , "
+        + currentdate.getHours() + ":"
+        + currentdate.getMinutes() + ":"
+        + currentdate.getSeconds();
+}
 
 function toHomePage() {
     location.assign('index.html');

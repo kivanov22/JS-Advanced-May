@@ -15,7 +15,8 @@ export function createHomeViewTopic(userPost) {
 
     let div = ce('div');
 
-    let paragraphDate = ce('p', undefined, 'Date:2020-10-10T12:08:28.451Z');
+    let paragraphDate = ce('p');//underfined, 'Date:2020-10-10T12:08:28.451Z'
+    paragraphDate.textContent=dateAndTime();
 
     let nickNameDiv = ce('div', { class: 'nick-name' });
     let usernameParagraph = ce('p');
@@ -39,6 +40,16 @@ export function createHomeViewTopic(userPost) {
 
     return topicWrapperDiv;
 }
+
+export function dateAndTime(){
+    let currentdate = new Date(); 
+    return  "Date: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+}
 function goToPage(e) {
     e.preventDefault();
 
@@ -53,7 +64,8 @@ function goToPage(e) {
 
 
 let homeModule = {
-    createHomeViewTopic
+    createHomeViewTopic,
+    dateAndTime
 }
 
 export default homeModule;
